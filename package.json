@@ -1,0 +1,38 @@
+{
+  "name": "gotreactapi",
+  "version": "1.0.0",
+  "description": "A GoT themed-project using React and Fire & Ice API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html",
+    "build": "parcel build index.html",
+    "predeploy": "rm -rf dist && parcel build index.html",
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AuroreVanHoorebeke/got-react.git"
+  },
+  "keywords": [
+    "React",
+    "exercise",
+    "API",
+    "GoT",
+    "BeCode"
+  ],
+  "author": "AuroreVanHoorebeke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AuroreVanHoorebeke/got-react/issues"
+  },
+  "homepage": "https://aurorevanhoorebeke.github.io/got-react/",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}
