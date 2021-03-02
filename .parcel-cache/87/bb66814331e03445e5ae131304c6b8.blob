@@ -1,0 +1,104 @@
+"use strict";
+
+var helpers = require("../../../node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.default = void 0;
+
+  var _react = _interopRequireDefault(require("react"));
+
+  var _reactDom = _interopRequireDefault(require("react-dom"));
+
+  require("../../index.css");
+
+  var _jsxFileName = "/home/bluerory/Documents/BeCode/3.The-Mountain/2.Advanced_frontend/2.Exercises/GoTReactApi/src/js/components/ContentAPI.jsx";
+
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+  class ContentAPI extends _react.default.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        error: null,
+        isLoaded: false,
+        items: {}
+      };
+    }
+
+    componentDidMount() {
+      fetch("https://www.anapioficeandfire.com/api/books/").then(res => res.json()).then(result => {
+        this.setState({
+          isLoaded: true,
+          items: result
+        });
+      }, // Remarque : il est important de traiter les erreurs ici
+      // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
+      // des exceptions provenant de réels bugs du composant.
+      error => {
+        this.setState({
+          isLoaded: true,
+          error
+        });
+      });
+    }
+
+    render() {
+      const {
+        error,
+        isLoaded,
+        items
+      } = this.state;
+
+      if (error) {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 40,
+            columnNumber: 20
+          }
+        }, "Erreur : ", error.message);
+      } else if (!isLoaded) {
+        return /*#__PURE__*/_react.default.createElement("div", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 42,
+            columnNumber: 20
+          }
+        }, "Chargement\u2026");
+      } else {
+        return /*#__PURE__*/_react.default.createElement("ul", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 45,
+            columnNumber: 17
+          }
+        }, this.state.items.map(item => /*#__PURE__*/_react.default.createElement("li", {
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 47,
+            columnNumber: 33
+          }
+        }, item.name)), this.state.items.name);
+      }
+    }
+
+  }
+
+  var _default = ContentAPI;
+  exports.default = _default;
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
